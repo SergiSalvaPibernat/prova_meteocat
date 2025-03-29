@@ -3,14 +3,15 @@ package com.meteocat.temps.controller;
 import org.springframework.web.bind.annotation.*;
 import com.meteocat.temps.service.MunicipiService;
 import com.meteocat.temps.model.Municipi;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
-import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
 @RequestMapping("/api")
 public class MunicipiController {
-
+    private static final Logger logger = LoggerFactory.getLogger(MunicipiController.class);
     private final MunicipiService municipiService;
 
     public MunicipiController(MunicipiService municipiService){
@@ -19,6 +20,9 @@ public class MunicipiController {
 
     @GetMapping("/municipis")
     public List<Municipi> getMunicipis() {
-        return municipiService.getMunicipisFromS3();
+        logger.info("Fetching municipis");
+        List<Municipi> municipis = municipiService.getMunicipisFromS3();
+        logger.info("Fetched {} municipis", municipis.size());
+        return municipis;
     }
 }
