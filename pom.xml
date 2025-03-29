@@ -61,6 +61,12 @@
 			<version>3.3.0</version> 
 		</dependency>-->
 
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
 		<!-- AWS SDK per a accedir a S3 -->
 		<dependency>
 			<groupId>software.amazon.awssdk</groupId>
